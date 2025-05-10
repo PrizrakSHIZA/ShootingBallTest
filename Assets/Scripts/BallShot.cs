@@ -18,10 +18,9 @@ public class BallShot : MonoBehaviour
             if (col.CompareTag("Obstacle"))
             {
                 col.GetComponent<Obstacle>().Explode();
+                Destroy(gameObject);
             }
         }
-
-        Destroy(gameObject);
     }
 
     void AutoDestroy()

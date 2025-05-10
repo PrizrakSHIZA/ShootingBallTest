@@ -14,6 +14,9 @@ public class Road : MonoBehaviour
     public void ObstacleDestroyed()
     {
         obstacles--;
+
+        if (obstacles <= 0)
+            GameControler.Singleton.GameOver("Win!", true);
     }
 
     void OnTriggerEnter(Collider other)
@@ -24,6 +27,8 @@ public class Road : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        if (GameControler.Singleton.GameEnded) return;
+
         if (other.tag == "Obstacle")
             obstacles--;
 
