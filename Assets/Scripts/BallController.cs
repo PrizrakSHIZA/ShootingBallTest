@@ -19,6 +19,8 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
+        if (GameControler.Singleton.GameEnded) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             StartCharging();
