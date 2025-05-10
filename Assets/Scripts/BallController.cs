@@ -58,7 +58,10 @@ public class BallController : MonoBehaviour
     {
         isCharging = false;
         Rigidbody rb = currentShot.GetComponent<Rigidbody>();
-        Vector3 direction = (GameControler.Singleton.Goal.transform.position - transform.position).normalized;
+        // ADjusting height of target
+        Vector3 goalPos = GameControler.Singleton.Goal.transform.position;
+        goalPos.y = transform.position.y;
+        Vector3 direction = (goalPos - transform.position).normalized;
         rb.velocity = direction * shootForce;
         currentShot.GetComponent<BallShot>().power = currentShot.transform.localScale.x * 1.5f;
         currentShot = null;

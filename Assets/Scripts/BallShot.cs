@@ -4,6 +4,12 @@ public class BallShot : MonoBehaviour
 {
     public float power = 1f;
 
+    private void Start()
+    {
+        //Preventing endless fly
+        Invoke(nameof(AutoDestroy), 10f);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         Collider[] infected = Physics.OverlapSphere(transform.position, power);
@@ -15,6 +21,11 @@ public class BallShot : MonoBehaviour
             }
         }
 
+        Destroy(gameObject);
+    }
+
+    void AutoDestroy()
+    {
         Destroy(gameObject);
     }
 }
