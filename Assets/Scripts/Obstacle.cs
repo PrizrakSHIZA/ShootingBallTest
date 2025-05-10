@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Obstacle : MonoBehaviour
 {
@@ -16,9 +17,11 @@ public class Obstacle : MonoBehaviour
     public void Explode()
     {
         // Visual effects
-        
-        //Because of unity bug where destroyed oibjects didnt trigger onTrigger events I added this method to properly counting obstacles
-        GameControler.Singleton.Road.ObstacleDestroyed();
-        Destroy(gameObject);
+        material.DOColor(color, 1f).OnComplete(() => 
+        {
+            //Because of unity bug where destroyed oibjects didnt trigger onTrigger events I added this method to properly counting obstacles
+            GameControler.Singleton.Road.ObstacleDestroyed();
+            Destroy(gameObject);
+        });
     }
 }

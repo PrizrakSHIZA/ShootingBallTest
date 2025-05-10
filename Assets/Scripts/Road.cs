@@ -27,7 +27,7 @@ public class Road : MonoBehaviour
         if (other.tag == "Obstacle")
             obstacles--;
 
-        if (obstacles == 0)
+        if (obstacles <= 0)
             GameControler.Singleton.GameOver("Win!", true);
     }
 }
