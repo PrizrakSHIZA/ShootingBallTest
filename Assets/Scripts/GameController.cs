@@ -7,6 +7,7 @@ public class GameControler : MonoBehaviour
 
     public BallController BallController;
     public Goal Goal;
+    public Road Road;
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class GameControler : MonoBehaviour
 
     public void GameOver(string reason, bool win)
     {
-        Debug.Log("Lose: " + reason);
+        Debug.Log(win ? "Win: " : "Lose: " + reason);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
