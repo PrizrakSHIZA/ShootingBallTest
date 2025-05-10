@@ -57,10 +57,10 @@ public class BallController : MonoBehaviour
     void ReleaseShot()
     {
         isCharging = false;
-        Rigidbody rb = currentShot.AddComponent<Rigidbody>();
+        Rigidbody rb = currentShot.GetComponent<Rigidbody>();
         Vector3 direction = (GameControler.Singleton.Goal.transform.position - transform.position).normalized;
         rb.velocity = direction * shootForce;
-        currentShot.GetComponent<BallShot>().power = currentShot.transform.localScale.x;
+        currentShot.GetComponent<BallShot>().power = currentShot.transform.localScale.x * 1.5f;
         currentShot = null;
     }
 }
