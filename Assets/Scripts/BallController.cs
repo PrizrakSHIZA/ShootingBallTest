@@ -38,6 +38,7 @@ public class BallController : MonoBehaviour
         isCharging = true;
         currentShot = Instantiate(shotPrefab, shotSpawnPoint.position, Quaternion.identity);
         currentShot.transform.localScale = Vector3.one * 0.1f;
+        transform.localScale -= Vector3.one * 0.1f;
     }
 
     void ChargeShot()
@@ -58,7 +59,7 @@ public class BallController : MonoBehaviour
     {
         isCharging = false;
         Rigidbody rb = currentShot.GetComponent<Rigidbody>();
-        // ADjusting height of target
+        // Adjusting height of target
         Vector3 goalPos = GameControler.Singleton.Goal.transform.position;
         goalPos.y = transform.position.y;
         Vector3 direction = (goalPos - transform.position).normalized;
